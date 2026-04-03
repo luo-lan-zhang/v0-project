@@ -2,7 +2,7 @@
 
 import { Canvas } from '@react-three/fiber'
 import { Suspense } from 'react'
-import { OrbitControls, Environment, Float, Text3D, Center } from '@react-three/drei'
+import { Float } from '@react-three/drei'
 import { Player } from './player'
 import { Platforms } from './platforms'
 import { GameCamera } from './game-camera'
@@ -19,7 +19,9 @@ export function GameScene() {
       <Suspense fallback={null}>
         <GameCamera />
         <GameLights />
-        <Environment preset="night" />
+        
+        {/* Background fog for depth */}
+        <fog attach="fog" args={['#1a1a2e', 15, 40]} />
         
         {/* Ground */}
         <GroundPlane />
